@@ -14,3 +14,13 @@ services:
       - WDS_SOCKET_HOST=127.0.0.1 
       - CHOKIDAR_USEPOLLING=true
       - WATCHPACK_POLLING=true 
+
+  api:
+    build: ./api
+    container_name: docker_api
+    command: npm run dev
+    volumes:
+      - ./api/src:/usr/src/app/src
+    ports:
+      - 80:3001
+    

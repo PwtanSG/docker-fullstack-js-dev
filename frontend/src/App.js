@@ -1,13 +1,23 @@
 import logo from './logo.svg';
 import './App.css';
+import axios from 'axios'
+import { useState } from 'react';
 
 function App() {
+  const [result, setResult] = useState('');
+  const getHealth = async () => {
+    const response = await axios.get('http://localhost/test');
+    console.log(response.data)
+    setResult(response.data)
+  }
+  getHealth();
+
   return (
     <div className="App">
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <p>
-          Edit <code>src/App.js</code> and save to update this my this 2 reload.
+          {result} save to update this my this 2 !reload.
         </p>
         <a
           className="App-link"
